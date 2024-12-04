@@ -1,0 +1,27 @@
+
+CREATE TABLE Wallets (
+    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT NOT NULL,
+    Currency TEXT NOT NULL,
+    Balance REAL NOT NULL
+);
+
+CREATE TABLE IncomeSources (
+    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT NOT NULL
+);
+
+CREATE TABLE ExpenseCategories (
+    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT NOT NULL
+);
+
+CREATE TABLE Transactions (
+    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+    WalletId INTEGER NOT NULL,
+    Type TEXT NOT NULL, -- "Income" или "Expense"
+    Amount REAL NOT NULL,
+    Description TEXT,
+    Date TEXT NOT NULL,
+    FOREIGN KEY (WalletId) REFERENCES Wallets(Id)
+);
